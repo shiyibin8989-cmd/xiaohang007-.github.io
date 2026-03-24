@@ -1,71 +1,29 @@
----
-layout: default
-title: Home
-notitle: true
+<h2>Interactive AI Demos</h2>
 
-# groups of columns of {roles: list, width: num, image: bool}
-role-tables:
-- - roles: [faculty, postdoc, staff]
-    width: 4
-    image: true
-  - roles: [grad]
-    width: 8
-    image: true
-- - roles: [collab, ugrad, ugrad-alum]
-    width: 5
-    image: false
-  - roles: [alum]
-    width: 7
-    image: false
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:20px;">
 
----
+  <div style="border:1px solid #ddd;border-radius:12px;padding:18px;">
+    <h3>Background Removal</h3>
+    <p>Remove image backgrounds automatically and export transparent PNG.</p>
+    <a href="https://huggingface.co/spaces/not-lain/background-removal" target="_blank">
+      Open Demo →
+    </a>
+  </div>
 
-<div class="jumbotron">
-    <p>
-        <b>肖航课题组</b>开发了首个<b>基于字符串的可逆晶体表示法: SLICES</b>,实现了生成式AI驱动的<b>Text2Crystal</b>。SLICES有望成为AI驱动的晶体材料逆向设计的标准工具,即<b>晶体材料的"SMILES"</b>。 
-    </p>
-    <p>
-    The <b>XIAO Research Group</b> developed the first <b>string-based invertible, invariant crystallographic representation: SLICES</b>, achieving <b>Text2Crystal</b> powered by generative AI. SLICES has the potential to become a standard tool for <i> in-silico </i> materials discovery, i.e. "SMILES" for crystal structures.
-    </p>
-</div>
+  <div style="border:1px solid #ddd;border-radius:12px;padding:18px;">
+    <h3>Hunyuan3D-2.1</h3>
+    <p>Generate high-resolution 3D meshes from images or text prompts.</p>
+    <a href="https://huggingface.co/spaces/tencent/Hunyuan3D-2.1" target="_blank">
+      Open Demo →
+    </a>
+  </div>
 
-<section>
-    <h2>News</h2>
-    <ul class="news list-unstyled">
-        {% for post in site.posts limit: site.front_page_news %}
-            {% include news-item.html item=post %}
-        {% endfor %}
-    </ul>
-    {% assign numposts = site.posts | size %}
-    {% if numposts >= 1 %}
-        <p>
-            <span class="fa fa-fw fa-history"></span>
-            <a href="{{ site.base }}/blog.html">Older posts&hellip;</a>
-        </p>
-    {% endif %}
-</section>
+  <div style="border:1px solid #ddd;border-radius:12px;padding:18px;">
+    <h3>Tokenizer Playground</h3>
+    <p>Interactive visualization of LLM tokenization.</p>
+    <a href="https://huggingface.co/spaces/Xenova/the-tokenizer-playground" target="_blank">
+      Open Demo →
+    </a>
+  </div>
 
-<script
-	type="module"
-	src="https://gradio.s3-us-west-2.amazonaws.com/6.5.1/gradio.js"
-></script>
-
-<gradio-app src="https://shiyibin-abin.hf.space"></gradio-app>
-
-
-
-
-<div id="people">
-    <h2>People</h2>
-    {% for role-table in page.role-tables %}
-        <section class="people row justify-content-between">
-            {% for role-column in role-table %}
-                <div class="col-md-{{ role-column.width }}">
-                    {% for role in role-column.roles %}
-                        {% include role-people.html role=role image=role-column.image %}
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </section>
-    {% endfor %}
 </div>
